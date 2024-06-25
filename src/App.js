@@ -133,7 +133,7 @@ function App() {
                     {" "}
                     Toggle
                   </button>
-                  s<button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                  <button onClick={() => deleteTodo(todo.id)}>Delete</button>
                 </div>
               </div>
             )}

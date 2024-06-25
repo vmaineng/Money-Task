@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Build Your Wealth
+>Full stack application to help users track their tasks and get rewards.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
+* [General info](#general-info)
+* [Project Demo](#project-demo)
+* [Project Video](#project-video)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Inspiration](#inspiration)
+* [Contact](#contact)
+* [License](#license)
 
-## Available Scripts
+## General Info
+Users are able to:
 
-In the project directory, you can run:
+- can register, login, and logout
+- Add new task
+- update new task
+- see dashboard of tasks tracked
 
-### `npm start`
+<div align="center">Welcome to Task Master </div>
+<br/>
+<div align="center">
+<kbd>
+Desktop view:
+<img width="700" alt="icon" src="https://user-images.githubusercontent.com/100221733/209727878-5091d8d3-d1eb-462f-ae70-24a0c202c7d7.png">
+</kbd>
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Demo
+[Click to view site] ()
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Video
 
-### `npm test`
+## Technologies
+### Backend Development 
+* Node.js 
+* Express.js version 4.18.2
+* Mongoose version 6.8.0
+* Supabase
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend Development 
+* JavaScript (ES6)
+* React.js version 18.2.0
+* React-Dom version 18.2.0
+* React-router-dom version 6.4.5
 
-### `npm run build`
+## Setup
+To render this project on your computer:
+1. Clone the GitHub repository locally to your computer
+2. Start the backend, type the command $npm run dev in the terminal line.
+3. Navigate to the client fodler. In the command line, type the following:
+$npm install and npm start. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Code Example
+## Node.js/Express.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+## JavaScript/React.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Status
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Inspiration
 
-### Analyzing the Bundle Size
+The inspiration derived from setting goals for the new year. As the new year falls upon us, best way to reach our goals is through the habits we set daily, weekly, and monthly.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact
+Mai Vang
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Github: https://github.com/vmaineng
+2. Medium: https://medium.com/@vmaineng
+3. LinkedIn: https://www.linkedin.com/in/mai-vang-software-engineer/
+4. Email: vmaineng@gmail.com
