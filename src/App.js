@@ -11,6 +11,12 @@ function App() {
     fetchTodos();
   }, []);
 
+  /**
+   * Fetches todos from the "todos" table in the supabase database and updates the state with the fetched data.
+   *
+   * @return {Promise<void>} - Resolves when the todos are successfully fetched and the state is updated.
+   *                          Rejects with an error if there was an issue fetching the todos.
+   */
   const fetchTodos = async () => {
     const { data, error } = await supabase
       .from("todos")
@@ -23,6 +29,12 @@ function App() {
     }
   };
 
+  /**
+   * Asynchronously adds a new todo to the database and updates the state with the new todo.
+   *
+   * @return {Promise<void>} - Resolves when the todo is successfully added and the state is updated.
+   *                          Rejects with an error if there was an issue adding the todo.
+   */
   const addTodo = async () => {
     const { data, error } = await supabase
       .from("todos")
@@ -30,12 +42,19 @@ function App() {
       .select();
     if (error) {
       console.log("Error adding todo:", error);
-    } else {
+    } else if (Array.isArray(data)) {
       setTodos((prevTodos) => [...prevTodos, ...data]);
       setNewTodo("");
     }
   };
 
+  /**
+   * Updates a todo in the "todos" table in the supabase database.
+   *
+   * @param {string} id - The ID of the todo to update.
+   * @return {Promise<void>} - Resolves when the todo is successfully updated.
+   *                          Rejects with an error if there was an issue updating the todo.
+   */
   const updateTodo = async (id) => {
     const { error } = await supabase
       .from("todos")
@@ -71,5 +90,58 @@ function App() {
     }
   };
 
-  return <div>App</div>;
+  return (
+    <div>
+      <h1>Todo App</h1>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <input
+          type="text"
+          placeholder="New task"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        />
+        <button onClick={addTodo} style={{ marginTop: "10px" }}>
+          Add
+        </button>
+      </div>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {todos.map((todo) => (
+          <li
+            key={todo.id}
+            style={{ marginBottom: "1rem", textAlign: "center" }}
+          >
+            {editingId === todo.id ? (
+              <input
+                type="text"
+                value={editingText}
+                onChange={(e) => setEditingText(e.target.value)}
+                onBlur={() => updateTodo(todo.id)}
+              />
+            ) : (
+              <div style={{ marginTop: "10px" }}>
+                <span
+                  style={{
+                    textDecoration: todo.is_completed ? "line-through" : "none",
+                  }}
+                >
+                  {todo.task}
+                </span>
+                <div style={{ marginLeft: "1rem" }}>
+                  <button
+                    onClick={() => toggleTodo(todo.id, todo.is_completed)}
+                  >
+                    {" "}
+                    Toggle
+                  </button>
+                  s<button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
+
+export default App;
