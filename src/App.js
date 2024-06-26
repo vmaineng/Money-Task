@@ -13,82 +13,61 @@ function App() {
     fetchTodos();
   }, []);
 
-  /**
-   * Fetches todos from the "todos" table in the supabase database and updates the state with the fetched data.
-   *
-   * @return {Promise<void>} - Resolves when the todos are successfully fetched and the state is updated.
-   *                          Rejects with an error if there was an issue fetching the todos.
-   */
   const fetchTodos = async () => {
-    const { data, error } = await supabase
-      .from("todos")
-      .select("*")
-      .order("id", { ascending: true });
-    if (error) {
-      console.log("Error fetching todos:", error);
-    } else {
+    try {
+      const { data } = await supabase
+        .from("todos")
+        .select("*")
+        .order("id", { ascending: true });
       setTodos(data);
+    } catch (e) {
+      console.error(e);
     }
   };
 
-  /**
-   * Asynchronously adds a new todo to the database and updates the state with the new todo.
-   *
-   * @return {Promise<void>} - Resolves when the todo is successfully added and the state is updated.
-   *                          Rejects with an error if there was an issue adding the todo.
-   */
   const addTodo = async () => {
-    const { data, error } = await supabase
-      .from("todos")
-      .insert([{ task: newTodo, is_completed: false }])
-      .select();
-    if (error) {
-      console.log("Error adding todo:", error);
-    } else if (Array.isArray(data)) {
-      setTodos((prevTodos) => [...prevTodos, ...data]);
+    try {
+      const { data } = await supabase
+        .from("todos")
+        .insert([{ task: newTodo, is_completed: false }])
+        .select();
+      setTodos([...todos, data[0]]);
       setNewTodo("");
+    } catch (e) {
+      console.error(e);
     }
   };
 
-  /**
-   * Updates a todo in the "todos" table in the supabase database.
-   *
-   * @param {string} id - The ID of the todo to update.
-   * @return {Promise<void>} - Resolves when the todo is successfully updated.
-   *                          Rejects with an error if there was an issue updating the todo.
-   */
-  const updateTodo = async (id) => {
-    const { error } = await supabase
-      .from("todos")
-      .update({ task: editingText })
-      .eq("id", id);
-    if (error) {
-      console.log("Error updating todo:", error);
-    } else {
-      fetchTodos();
+  const updateTodo = async () => {
+    try {
+      await supabase
+        .from("todos")
+        .update({ task: editingText })
+        .eq("id", editingId);
       setEditingId(null);
       setEditingText("");
+    } catch (e) {
+      console.error(e);
     }
   };
 
   const toggleTodo = async (id, is_completed) => {
-    const { error } = await supabase
-      .from("todos")
-      .update({ is_completed: !is_completed })
-      .eq("id", id);
-    if (error) {
-      console.log("Error toggling todo:", error);
-    } else {
-      fetchTodos();
+    try {
+      await supabase
+        .from("todos")
+        .update({ is_completed: !is_completed })
+        .eq("id", id);
+    } catch (e) {
+      console.error(e);
     }
   };
 
   const deleteTodo = async (id) => {
-    const { error } = await supabase.from("todos").delete().eq("id", id);
-    if (error) {
-      console.log("Error deleting todo:", error);
-    } else {
-      fetchTodos();
+    try {
+      await supabase.from("todos").delete().eq("id", id);
+      setTodos(todos.filter((todo) => todo.id !== id));
+    } catch (e) {
+      console.error(e);
     }
   };
 

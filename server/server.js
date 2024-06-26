@@ -1,14 +1,25 @@
+import { supabase } from "./supabaseClient";
+require("dotenv").config();
 const express = require("express");
-const { createClient } = require("@supabase/supabase-js");
 const cors = require("cors");
-
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
-const supabaseKey = process.env.REACT_APP_SUPABASE_API_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+// const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+// const supabaseKey = process.env.REACT_APP_SUPABASE_API_KEY;
+
+// if (!supabaseUrl || !supabaseKey) {
+//   throw new Error(
+//     "SUPABASE_URL and SUPABASE_API_KEY must be defined in environment variables."
+//   );
+// }
+
+// const supabase = createClient(supabaseUrl, supabaseKey);
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server listening on port ${process.env.PORT}`);
+});
 
 app.get("/todos", async (req, res) => {
   const { data, error } = await supabase
