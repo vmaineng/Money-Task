@@ -57,6 +57,7 @@ function App() {
         .from("todos")
         .update({ is_completed: !is_completed })
         .eq("id", id);
+      fetchTodos();
     } catch (e) {
       console.error(e);
     }
