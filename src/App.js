@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -74,7 +75,7 @@ function App() {
 
   return (
     <div>
-      <h1>Todo App</h1>
+      <Navbar />
       <TodoForm newTodo={newTodo} setNewTodo={setNewTodo} addTodo={addTodo} />
       <TodoList
         todos={todos}
